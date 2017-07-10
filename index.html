@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Immortal</title>
+</head>
+<body>
+
+<!--<div class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+            <!--<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--<div class="navbar-collapse collapse" id="navbar-main">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span-->
+                            <!--class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu" aria-labelledby="themes">-->
+                        <!--<li><a href="../default/">Default</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="../cerulean/">Cerulean</a></li>-->
+                        <!--<li><a href="../cosmo/">Cosmo</a></li>-->
+                        <!--<li><a href="../cyborg/">Cyborg</a></li>-->
+                        <!--<li><a href="../darkly/">Darkly</a></li>-->
+                        <!--<li><a href="../flatly/">Flatly</a></li>-->
+                        <!--<li><a href="../journal/">Journal</a></li>-->
+                        <!--<li><a href="../lumen/">Lumen</a></li>-->
+                        <!--<li><a href="../paper/">Paper</a></li>-->
+                        <!--<li><a href="../readable/">Readable</a></li>-->
+                        <!--<li><a href="../sandstone/">Sandstone</a></li>-->
+                        <!--<li><a href="../simplex/">Simplex</a></li>-->
+                        <!--<li><a href="../slate/">Slate</a></li>-->
+                        <!--<li><a href="../solar/">Solar</a></li>-->
+                        <!--<li><a href="../spacelab/">Spacelab</a></li>-->
+                        <!--<li><a href="../superhero/">Superhero</a></li>-->
+                        <!--<li><a href="../united/">United</a></li>-->
+                        <!--<li><a href="../yeti/">Yeti</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="../help/">Help</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="http://news.bootswatch.com">Blog</a>-->
+                <!--</li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Slate <span-->
+                            <!--class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu" aria-labelledby="download">-->
+                        <!--<li><a href="http://jsfiddle.net/bootswatch/g1q7jxzf/">Open Sandbox</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>-->
+                        <!--<li><a href="./bootstrap.css">bootstrap.css</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="./variables.less">variables.less</a></li>-->
+                        <!--<li><a href="./bootswatch.less">bootswatch.less</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="./_variables.scss">_variables.scss</a></li>-->
+                        <!--<li><a href="./_bootswatch.scss">_bootswatch.scss</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>-->
+                <!--<li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>-->
+            <!--</ul>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            content
+        </div>
+
+        <div class="col-xs-6">
+            content
+        </div>
+
+        <div class="col-xs-3">
+
+            <div class="col-lg-12">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-default btn-block" id="im_btn_resources">Resources</a>
+                    <a href="#" class="btn btn-default btn-block" id="im_btn_buildings">Buildings</a>
+                </div>
+            </div>
+
+            <div id="im_buildings" style="display: none;">
+                <p class="text-warning text-center" style="line-height: 37px;" >BUILDINGS</p>
+            </div>
+
+            <div class="col-lg-12" id="im_resources">
+                <!-- START WOOD -->
+                <div class="row" id="im_wood">
+                    <div class="col-lg-8">
+                        <p class="text-warning text-center" style="line-height: 37px;" id="im_wood_quantity">Wood: 100100100100100</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="img/forest_trees.jpg">
+                    </div>
+                </div>
+                <!-- END WOOD -->
+
+                <!-- START MEAT -->
+                <div class="row" id="im_meat">
+                    <div class="col-lg-8">
+                        <p class="text-warning text-center" style="line-height: 37px;"  id="im_meat_quantity">Meet: 100100100100100</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="img/deer.jpg   ">
+                    </div>
+                </div>
+                <!-- END MEAT -->
+
+                <!-- START WHEAT -->
+                <div class="row" id="im_wheat">
+                    <div class="col-lg-8">
+                        <p class="text-warning text-center" style="line-height: 37px;" id="im_wheat_quantity">Wheat: 100100100100100</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="img/farm_field.jpg">
+                    </div>
+                </div>
+                <!-- END WHEAT -->
+
+                <!-- START HIDE -->
+                <div class="row" id="im_hide">
+                    <div class="col-lg-8">
+                        <p class="text-warning text-center" style="line-height: 37px;" id="im_hide_quantity">Hide: 100100100100100</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="img/hide.jpg">
+                    </div>
+                </div>
+                <!-- END HIDE -->
+
+                <!-- START BONES -->
+                <div class="row" id="im_bones">
+                    <div class="col-lg-8">
+                        <p class="text-warning text-center" style="line-height: 37px;" id="im_bones_quantity">Bones: 100100100100100</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-circle" src="img/bones.jpg">
+                    </div>
+                </div>
+                <!-- END BONES -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/misc.js"></script>
+</body>
+</html>
