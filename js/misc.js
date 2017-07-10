@@ -14,7 +14,7 @@ $(document).ready(function () {
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-// Clear the last log message every 10 seconds
+// Clear the last log message every 4 seconds
 let big_log = "#im_big_log";
 setInterval(function () {
     let count = $(big_log).find("p").length;
@@ -24,3 +24,7 @@ setInterval(function () {
         });
     }
 }, 4000);
+
+im.functions.global.writeToLog = function (message) {
+    $('#im_log').prepend('<p>' + message + '</p>')
+};

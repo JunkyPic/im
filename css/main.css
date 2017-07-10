@@ -4,6 +4,10 @@ body { background: #272b30 !important; padding-top: 70px; }
     color: white!important;
 }
 
+.text-white {
+    color: white!important;
+}
+
 #im_gather_stone_progress {
     margin-top: 3%;
     background-color: rgba(6, 6, 6, 0.6);
