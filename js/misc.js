@@ -14,16 +14,13 @@ $(document).ready(function () {
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
 // Clear the last log message every 10 seconds
-
+let big_log = "#im_big_log";
 setInterval(function () {
-    let big_log = "#im_big_log";
     let count = $(big_log).find("p").length;
     if(count > 20) {
         $(big_log +" p:last").fadeOut(1000, function () {
             $(this).remove();
         });
     }
-
-}, 2000);
+}, 4000);
