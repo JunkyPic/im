@@ -144,9 +144,9 @@ im.buildings.cokeOven = {
 im.resources =  {};
 
 im.resources.wood = {
+    machineName: 'wood',
     quantity: 10,
-    canBuy: true,
-    canSell: true,
+    canBeTraded: true,
     baseCost: 1,
     displayName: 'Wood',
     tooltip: {
@@ -155,10 +155,10 @@ im.resources.wood = {
 };
 
 im.resources.stone = {
+    machineName: 'stone',
     quantity: 10,
     baseCost: 1,
-    canBuy: true,
-    canSell: true,
+    canBeTraded: true,
     displayName: 'Stone',
     tooltip: {
         tooltip_text: null,
@@ -167,6 +167,7 @@ im.resources.stone = {
 
 im.resources.sand = {
     quantity: 0,
+    canBeTraded: false,
     displayName: 'Stone',
     tooltip: {
         tooltip_text: null,
@@ -182,6 +183,7 @@ im.resources.gravel = {
 };
 
 im.resources.limestone = {
+    canBeTraded: false,
     quantity: 0,
     displayName: 'Limestone',
     tooltip: {
