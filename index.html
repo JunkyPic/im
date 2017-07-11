@@ -10,24 +10,6 @@
     <title>Immortal</title>
 </head>
 <body>
-
-<!--<div class="container" id="chapter_1">-->
-<!--<div class="row text-center" id="chapter_1_intro">-->
-<!--<div class="col-xs-3"></div>-->
-
-<!--<div class="col-xs-6">-->
-
-<!--<h1>Chapter 1</h1>-->
-<!--<h2>The arrival</h2>-->
-<!--<p>You arrive to your new land. You've bought the deed from a man you encountered while traveling, he sold it to you for only 20 silver. A bargain!</p>-->
-<!--<p>You're pleased at what you see. A large, dark forest on the left, and open fields as far as the eye can see to the right. The land looks fertile, forest creatures can be seen prancing around.</p>-->
-<!--<p>But now is not the time to rest, you must get to work...</p>-->
-<!--<a href="#" class="btn btn-next btn-lg" id="chapter_1_intro_skip">Start your journey</a>-->
-<!--</div>-->
-<!--<div class="col-xs-3"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--style="display: none"-->
 <div class="container" id="chapter_2">
     <div class="row">
         <div class="col-xs-3">
@@ -38,7 +20,6 @@
                 </div>
             </div>
             <div class="row top-buffer">
-
                 <a href="#" class="btn btn-default btn-lg btn-block" id="im_gather_stone_btn">Gather stone</a>
                 <div class="progress" id="im_gather_stone_progress" style="display: none;">
                     <div class="progress-bar" id="im_gather_stone_progress_bar" style="width: 0;"></div>
@@ -46,7 +27,7 @@
             </div>
 
             <div class="row top-buffer text-white text-center">
-                <h2>Inventory</h2>
+                <h2 class="">Inventory</h2>
                 <div class="row">
                     <div class="col-xs-3"><span id="im_inv_axe_slot">Empty</span></div>
                     <div class="col-xs-3">Empty</div>
@@ -66,10 +47,33 @@
                     <div class="col-xs-3">Empty</div>
                 </div>
             </div>
+            <div class="row top-buffer">
+                <h2 class="text-white text-center">Workshop</h2>
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-default">Middle</a>
+                    <a href="#" class="btn btn-default">Middle</a>
+                    <a href="#" class="btn btn-default">Middle</a>
+                    <a href="#" class="btn btn-default">Middle</a>
+                    <a href="#" class="btn btn-default">Right</a>
+                </div>
+                <!--<a href="#" class="btn btn-default btn-lg btn-block" id="im_build_axe">Axe: 100 stone | 100 wood</a>-->
+            </div>
+            <div class="row top-buffer text-white text-center bottom-buffer">
+                <div class="row">
+                    <a href="#" class="btn btn-default btn-lg btn-block" id="im_stash_see_button" data-toggle="modal" data-target="#im_stash_modal">See stash</a>
+                </div>
+            </div>
+
+            <div class="row top-buffer text-white text-center bottom-buffer">
+                <div class="row">
+                    <a href="#" class="btn btn-default btn-lg btn-block" id="im_trade" data-toggle="modal" data-target="#im_trade_modal">Trade</a>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-xs-6 text-center" id="im_big_log">
-            <div id="im_log"></div>
+        <div class="col-xs-6 text-center" id="im_page">
+            <div id="im_paragraph"></div>
         </div>
 
         <div class="col-xs-3">
@@ -78,98 +82,287 @@
                     <a href="#" class="btn btn-default btn-block" id="im_btn_resources">Resources</a>
                     <a href="#" class="btn btn-default btn-block" id="im_btn_buildings">Buildings</a>
                 </div>
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-default btn-block" id="im_btn_generation">Generation</a>
+                    <a href="#" class="btn btn-default btn-block" id="im_btn_research">Research</a>
+                </div>
             </div>
 
-            <div id="im_buildings" style="display: none;">
-                <p class="text-warning text-center" style="line-height: 37px;">BUILDINGS</p>
+            <div id="im_buildings" class="text-white">
+                <div class="row">
+                    <div class="col-lg-offset-1 col-lg-10 top-buffer">
+                        <ul class="nav nav-pills nav-stacked text-center">
+                            <li class="dropdown text-center">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" id="im_buildings_nav_dropdown_link">
+                                    Construct <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-toggle="im_buildings_underground_mine_tooltip" data-placement="left" id="im_buildings_underground_mine_tooltip" data-html="true" title="Missing information">Underground Mine</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_surface_mine_tooltip" data-placement="left" id="im_buildings_surface_mine_tooltip" data-html="true" title="Missing information">Surface Mine</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_lumber_mill_tooltip" data-placement="left" id="im_buildings_lumber_mill_tooltip" data-html="true" title="Missing information">Lumber Mill</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_hunter_shack_tooltip" data-placement="left" id="im_buildings_hunter_shack_tooltip" data-html="true" title="Missing information">Hunter shack</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_tannery_tooltip" data-placement="left" id="im_buildings_tannery_tooltip" data-html="true" title="Missing information">Tannery</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_workshop_tooltip" data-placement="left" id="im_buildings_workshop_tooltip" data-html="true" title="Missing information">Workshop</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_warehouse_tooltip" data-placement="left" id="im_buildings_warehouse_tooltip" data-html="true" title="Missing information">Warehouse</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_wheat_farm_tooltip" data-placement="left" id="im_buildings_wheat_farm_tooltip" data-html="true" title="Missing information">Wheat Farm</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_blast_furnace_tooltip" data-placement="left" id="im_buildings_blast_furnace_tooltip" data-html="true" title="Missing information">Blast Furnace</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_forge_tooltip" data-placement="left" id="im_buildings_forge_tooltip" data-html="true" title="Missing information">Forge</a></li>
+                                    <li><a href="#" data-toggle="im_buildings_coke_oven_tooltip" data-placement="left" id="im_buildings_coke_oven_tooltip" data-html="true" title="Missing information">Coke Oven</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6" id="im_buildings_mine" style="display: none">
+                        <p>Mine</p>
+                        <img class="img-circle" src="img/im_iron_mine.jpg">
+                    </div>
+                    <div class="col-lg-6" id="im_buildings_open_mine" style="display: none">
+                        <p>Surface mine</p>
+                        <img class="img-circle" src="img/im_open_mine.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div id="im_generation" class="text-center text-white">
+                <div class="row">
+                    <div class="col-lg-12" id="im_generation_empty">
+                        <p>Looks like it's empty</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="im_research" class="text-center text-white">
+                <div class="row">
+                    <div class="col-lg-12" id="im_research_empty">
+                        <p>Nothing to research yet</p>
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-12" id="im_resources">
-                <!-- START WOOD -->
-                <div class="row" id="im_wood">
-                    <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6">
                         <p class="text-warning text-center" style="line-height: 37px;">Wood:
-                            <span id="im_wood_quantity">0</span></p>
+                            <span id="im_resources_wood_quantity">0</span></p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/forest_trees.jpg">
-                    </div>
-                </div>
-                <!-- END WOOD -->
-
-                <!-- START STONE -->
-                <div class="row" id="im_stone">
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <p class="text-warning text-center" style="line-height: 37px;">Stone:
-                            <span id="im_stone_quantity">0</span></p>
-                    </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/stone.jpg">
+                            <span id="im_resources_stone_quantity">0</span></p>
                     </div>
                 </div>
-                <!-- END STONE -->
 
-                <!-- START MEAT -->
-                <div class="row" id="im_meat">
-                    <div class="col-lg-8">
-                        <p class="text-warning text-center" style="line-height: 37px;" id="im_meat_quantity">Meat:
-                            0</p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Sand:
+                            <span id="im_resources_sand_quantity">0</span></p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/deer.jpg   ">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Gravel:
+                            <span id="im_resources_gravel_quantity">0</span></p>
                     </div>
                 </div>
-                <!-- END MEAT -->
 
-                <!-- START WHEAT -->
-                <div class="row" id="im_wheat">
-                    <div class="col-lg-8">
-                        <p class="text-warning text-center" style="line-height: 37px;" id="im_wheat_quantity">Wheat:
-                            0</p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Limestone :
+                            <span id="im_resources_limestone_quantity">0</span></p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/farm_field.jpg">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Clay:
+                            <span id="im_resources_clay_quantity">0</span></p>
                     </div>
                 </div>
-                <!-- END WHEAT -->
 
-                <!-- START HIDE -->
-                <div class="row" id="im_hide">
-                    <div class="col-lg-8">
-                        <p class="text-warning text-center" style="line-height: 37px;" id="im_hide_quantity">Hide:
-                            0</p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;" >Meat:
+                            <span id="im_resources_meat_quantity">0</span>
+                        </p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/hide.jpg">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Wheat:
+                            <span id="im_resources_wheat_quantity">0</span>
+                        </p>
                     </div>
                 </div>
-                <!-- END HIDE -->
 
-                <!-- START BONES -->
-                <div class="row" id="im_bones">
-                    <div class="col-lg-8">
-                        <p class="text-warning text-center" style="line-height: 37px;" id="im_bones_quantity">Bones:
-                            0</p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Animal skins:
+                            <span id="im_resources_skins_quantity">0</span>
+                        </p>
                     </div>
-                    <div class="col-lg-4">
-                        <img class="img-circle" src="img/bones.jpg">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Hide:
+                            <span id="im_resources_hide_quantity">0</span>
+                        </p>
                     </div>
                 </div>
-                <!-- END BONES -->
-            </div>
 
-            <div class="row top-buffer text-white text-center">
-                <h2>Workshop</h2>
-                <a href="#" class="btn btn-default btn-lg btn-block" id="im_build_axe">Axe: 100 stone | 100 wood</a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Coal:
+                            <span id="im_resources_coal_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Coal Coke:
+                            <span id="im_resources_coal_coke_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Copper:
+                            <span id="im_resources_copper_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Tin:
+                            <span id="im_resources_tin_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Bronze:
+                            <span id="im_resources_bronze_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Iron Ore:
+                            <span id="im_resources_iron_ore_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Iron:
+                            <span id="im_resources_iron_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Steel:
+                            <span id="im_resources_steel_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Bauxite:
+                            <span id="im_resources_bauxite_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Aluminium:
+                            <span id="im_resources_aluminium_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Nickle:
+                            <span id="im_resources_nickle_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Magnesium:
+                            <span id="im_resources_magnesium_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Silica:
+                            <span id="im_resources_silica_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Silicone:
+                            <span id="im_resources_silicone_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Titanium ore:
+                            <span id="im_resources_titanium_ore_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">Titanium:
+                            <span id="im_resources_titanium_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="text-center text-white">Luxury materials</p>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">
+                        <a href="#" data-toggle="im_resources_silver_tooltip" data-placement="left" id="im_resources_silver_tooltip" data-html="true" title="Missing information">Silver:</a>
+                        <span id="im_resources_silver_quantity">0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="text-warning text-center" style="line-height: 37px;">
+                            <a href="#" data-toggle="im_resources_gold_tooltip" data-placement="left" id="im_resources_gold_tooltip" data-html="true" title="Missing information">Gold:</a>
+                            <span id="im_resources_gold_quantity">0</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/misc.js"></script>
-<script type="text/javascript" src="js/chapter_1.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="im_stash_modal" tabindex="-1" role="dialog" aria-labelledby="im_stash_modal_label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center" id="im_stash_modal_label">Stash</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="im_trade_modal" tabindex="-1" role="dialog" aria-labelledby="im_trade_modal_label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center" id="im_trade_modal_label">Trade</h4>
+            </div>
+            <div class="modal-body">
+                <div id="im_trade_modal_body">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/_no_compress/jquery.js"></script>
+<script type="text/javascript" src="js/_no_compress/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/_no_compress/main.js"></script>
 </body>
 </html>

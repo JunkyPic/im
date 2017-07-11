@@ -1,4 +1,4 @@
-body { background: #272b30 !important; padding-top: 70px; }
+body { background: #272b30 !important; padding-top: 20px; }
 #chapter_1_intro { color: white!important; font-size: 15px;}
 #im_big_log {
     color: white!important;
@@ -6,6 +6,11 @@ body { background: #272b30 !important; padding-top: 70px; }
 
 .text-white {
     color: white!important;
+}
+
+#im_buildings_nav_dropdown_link{
+    color: black!important;
+    background-color:white!important;
 }
 
 #im_gather_stone_progress {
@@ -26,6 +31,7 @@ body { background: #272b30 !important; padding-top: 70px; }
 }
 
 .top-buffer { margin-top:20px; }
+.bottom-buffer { margin-bottom:20px; }
 .progress-bar {
     -webkit-transition: none !important;
     transition: none !important;
