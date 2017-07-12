@@ -46,11 +46,11 @@ $(document).ready(function () {
     $('[data-toggle="im_buildings_coke_oven_tooltip"]').tooltip();
 
     // Silver
-    $('#im_resources_silver_tooltip').attr('title', (im.resources.silver.tooltip.tooltip_text));
+    $('#im_resources_silver_tooltip').attr('title', ResourceFactory.asNew('Silver').getTooltipText());
     $('[data-toggle="im_resources_silver_tooltip"]').tooltip();
 
     // Gold
-    $('#im_resources_gold_tooltip').attr('title', (im.resources.gold.tooltip.tooltip_text));
+    $('#im_resources_gold_tooltip').attr('title', (ResourceFactory.asNew('Gold').getTooltipText()));
     $('[data-toggle="im_resources_gold_tooltip"]').tooltip();
 });
 
@@ -61,7 +61,7 @@ function buildTooltipText(obj) {
             if(value === 'tooltip_text') {
                 continue;
             }
-            html += unCamelCase/*regex is expensive, but eh, it's only executed once on load*/(value) + ' - ' + obj[value] + '<br>';
+            html += Misc.unCamelCase(value) + ' - ' + obj[value] + '<br>';
         }
     }
     if(obj.hasOwnProperty('tooltip_text')) {
@@ -70,15 +70,4 @@ function buildTooltipText(obj) {
     return 'Missing information.';
 }
 
-function unCamelCase(str) {
-    return str
-    // insert a space between lower & upper
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        // space before last upper in a sequence followed by lower
-        .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
-        // uppercase the first character
-        .replace(/^./, function (str) {
-            return str.toUpperCase();
-        })
-}
 

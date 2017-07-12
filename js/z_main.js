@@ -27,18 +27,26 @@ $(document).ready(function () {
         $('#im_generation').hide();
         $('#im_research').show();
     });
+
+    /**
+     * Used to open the trade interface
+     * All the trade logic is handled buy the Trade Class
+     */
+    $('#im_trade').click(function () {
+        $('#im_trade_modal_body').html(new Trade(im.resources).buildTradeArea());
+    })
 });
 
-function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-// Clear the last log message every 4 seconds
-let big_log = "#im_page";
-setInterval(function () {
-    let count = $(big_log).find("p").length;
-    if(count > 20) {
-        $(big_log +" p:last").fadeOut(1000, function () {
-            $(this).remove();
-        });
-    }
-}, 4000);
+// Clear log messages every x seconds
+Misc.clearPageMessage();
+
+// Populate initial values for resources
+$.each(im.resources, function (key, value) {
+    let itemClass = ResourceFactory.asNew(value.machineName.toLowerCase().strToUpperFirst()); // black magic fuckery
+    itemClass.setDisplayAmount(value.quantity);
+});
+
+// Gather wood
+ActionFactory.asNew('GatherWood').propagateAction();
+// Gather stone
+ActionFactory.asNew('GatherStone').propagateAction();

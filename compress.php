@@ -1,7 +1,7 @@
 <?php
 
-$path = 'js/';
-$main = 'js\_no_compress\main.js';
+$path = 'js' . DIRECTORY_SEPARATOR;
+$main = 'js' . DIRECTORY_SEPARATOR . '_no_compress' . DIRECTORY_SEPARATOR . 'main.js';
 
 $dir_iterator = new RecursiveDirectoryIterator($path);
 $iterator = new RecursiveIteratorIterator($dir_iterator, RecursiveIteratorIterator::SELF_FIRST);
@@ -10,9 +10,9 @@ $concat = '';
 
 foreach ($iterator as $file) {
 
-    if($file == 'js\_no_compress\main.js' ||
-        $file == 'js\_no_compress\bootstrap.min.js' ||
-        $file == 'js\_no_compress\jquery.js'
+    if($file == 'js' . DIRECTORY_SEPARATOR . '_no_compress' . DIRECTORY_SEPARATOR . 'main.js' ||
+        $file == 'js' . DIRECTORY_SEPARATOR . '_no_compress' . DIRECTORY_SEPARATOR . 'bootstrap.min.js' ||
+        $file == 'js' . DIRECTORY_SEPARATOR . '_no_compress' . DIRECTORY_SEPARATOR . 'jquery.js'
     ) {
         continue;
     }

@@ -31,6 +31,7 @@ body { background: #272b30 !important; padding-top: 20px; }
 }
 
 .top-buffer { margin-top:20px; }
+.top-buffer-5 { margin-top:5px; }
 .bottom-buffer { margin-bottom:20px; }
 .progress-bar {
     -webkit-transition: none !important;
