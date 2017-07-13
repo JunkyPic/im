@@ -12,6 +12,12 @@ body { background: #272b30 !important; padding-top: 20px; }
     color: black!important;
     background-color:white!important;
 }
+.im_builder_div > div > ul >li > a {
+    color: black!important;
+    background-color:white!important;
+    width: 100px;
+    text-align: center;
+}
 
 #im_gather_stone_progress {
     margin-top: 3%;

@@ -66,14 +66,6 @@ class ItemBase {
         return im.items[this.item].trade.baseValue;
     }
 
-    getStorageBaseAmount() {
-        return im.items[this.item].storage.baseAmount;
-    }
-
-    getStorageMaxAmount() {
-        return im.items[this.item].storage.maxAmount;
-    }
-
     getInventorySlot() {
         return im.items[this.item].inventory.slot;
     }
@@ -119,14 +111,60 @@ class ItemBase {
         // Either a boolean or an object
         // Lets not type juggle(too much) now shall we
         if(im.items[this.item].preRequirements === false) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     getPreRequirements() {
         return im.items[this.item].preRequirements;
+    }
+
+    hasResources() {
+        let materials = this.getCost();
+        let hasResources = true;
+
+        $.each(materials, function (key, value) {
+           if(im.resources[key].quantity < value) {
+               hasResources = false;
+               return false;
+           }
+        });
+
+        return hasResources;
+    }
+
+    canBuild() {
+        return this.hasResources() && this.hasPreRequirements;
+    }
+
+
+    errorMessages() {
+        return {
+            notEnoughMaterials: 'You don\'t have the necessary materials to build that.',
+            preRequirementsNotMet: 'Pre-requirements for this have not yet been met.',
+        };
+    }
+
+    build() {
+        if(!this.hasResources()) {
+            Page.paragraphWrite(this.errorMessages().notEnoughMaterials);
+        }
+        if(!this.hasPreRequirements()) {
+            Page.paragraphWrite(this.errorMessages().preRequirementsNotMet);
+        }
+
+        let materials = this.getCost();
+
+        $.each(materials, function (key, value) {
+            let currentMaterialClass = ResourceFactory.asNew(key.strToUpperFirst());
+            // Deduct materials
+            // And set the correct amount to the object and to frontend
+            currentMaterialClass.setQuantity(currentMaterialClass.getQuantity() - value).setDisplayAmount(currentMaterialClass.getQuantity());
+        });
+
+        this.setQuantity(this.getQuantity() + 1);
     }
 }
 

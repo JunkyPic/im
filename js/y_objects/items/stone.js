@@ -1,4 +1,3 @@
-
 im.items.stonePickaxe = {
     machineName: 'stonePickaxe',
     quantity: 0,
@@ -9,7 +8,10 @@ im.items.stonePickaxe = {
     durabilityLossMax: 5,
     inInventory: false,
     tooltip: {
-        tooltip_text: 'A basic Pickaxe. Allows you to mine stone faster. NOTE: Has to be in inventory for manual gathering to work. It will also lose durability when used and eventually break. Stacks with Stone Hammer',
+        tooltip_text: '<div style="width: 200px;">A basic Pickaxe. Allows you to mine stone faster. NOTE: ' +
+        'Has to be in inventory for manual gathering to work. ' +
+        'It will also lose durability when used and eventually break. ' +
+        'Stacks with Stone Hammer</div>',
     },
     trade: {
         canBeTraded: false,

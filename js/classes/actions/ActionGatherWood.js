@@ -28,6 +28,8 @@ class ActionGatherWood {
 
                     // TODO Setup logic for axes and such
                     itemWoodClass.setQuantity(itemWoodClass.getQuantity() + woodAmountGathered).setDisplayAmount(itemWoodClass.getQuantity());
+
+                    Page.paragraphWrite('Gathered ' + woodAmountGathered + ' wood.');
                 }
             });
         });

@@ -30,25 +30,56 @@ $(document).ready(function () {
 
     /**
      * Used to open the trade interface
-     * All the trade logic is handled buy the Trade Class
+     * All the trade logic is handled by the Trade Class
      */
     $('#im_trade').click(function () {
         $('#im_trade_modal_body').html(new Trade(im.resources).buildTradeArea());
-    })
+    });
+    // Clear log messages every x seconds
+    Page.paragraphClear();
+
+    // Populate initial values for resources
+    $.each(im.resources, function (key, value) {
+        let itemClass = ResourceFactory.asNew(value.machineName.toLowerCase().strToUpperFirst()); // black magic fuckery
+        itemClass.setDisplayAmount(value.quantity);
+    });
+
+    // Gather wood
+    ActionFactory.asNew('GatherWood').propagateAction();
+    // Gather stone
+    ActionFactory.asNew('GatherStone').propagateAction();
+    //Build Buildings
+    ActionFactory.asNew('UndergroundMine').propagateAction();
 });
 
-// Clear log messages every x seconds
-Misc.clearPageMessage();
+// Build various tools
+function onClickCreate(itemName, itemClassName, e) {
+    // Load the items object and get the current item being built
+    // So a class can be created to take care of the rest
+    e.preventDefault();
+    let objKeys = Object.keys(im.items);
 
-// Populate initial values for resources
-$.each(im.resources, function (key, value) {
-    let itemClass = ResourceFactory.asNew(value.machineName.toLowerCase().strToUpperFirst()); // black magic fuckery
-    itemClass.setDisplayAmount(value.quantity);
-});
+    if(!itemName in objKeys) {
+        Page.paragraphWrite('I do not know what that item is');
+        return false;
+    }
 
-// Gather wood
-ActionFactory.asNew('GatherWood').propagateAction();
-// Gather stone
-ActionFactory.asNew('GatherStone').propagateAction();
-//Build Buildings
-ActionFactory.asNew('UndergroundMine').propagateAction();
+    let itemClass = ItemFactory.asNew(itemClassName, itemName);
+
+    if(itemClass.canBuild()) {
+        itemClass.build();
+        Page.paragraphWrite('You have created one ' + itemClass.getDisplayName() + '. And now have: ' + itemClass.getQuantity() + ' ' + itemClass.getDisplayName());
+        // Place item in inventory if no other item is there
+        let inventoryClass = InventoryFactory.asNew();
+
+        let itemInvHtmlClass = inventoryClass.put(itemClass.getMachineName());
+
+        $(itemInvHtmlClass).attr('title',  itemClass.getTooltipText());
+        $(itemInvHtmlClass).attr('data-toggle',  itemInvHtmlClass);
+        $(itemInvHtmlClass).attr('data-placement',  'right');
+        $(itemInvHtmlClass).attr('data-html',  'true');
+        $('[data-toggle="'+itemInvHtmlClass+'"]').tooltip();
+        return;
+    }
+    Page.paragraphWrite('You cannot build that item yet.');
+}

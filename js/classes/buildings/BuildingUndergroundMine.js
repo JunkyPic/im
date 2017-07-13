@@ -46,7 +46,7 @@ class BuildingUndergroundMine extends BuildingBase {
             return;
         }
 
-        throw new Error('Unable to set tier ' + tierMachineName + 'It does not exist.');
+        throw new Error('Unable to set tier ' + tierMachineName + '.It does not exist.');
     }
 
     getProduceObj() {

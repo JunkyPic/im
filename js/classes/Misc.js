@@ -27,23 +27,6 @@ class Misc {
     static randomIntFromInterval(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
-
-    /**
-     * Clear the last log message every 4 seconds
-     * @return void
-     */
-    static clearPageMessage() {
-        let page = "#im_page";
-        setInterval(function () {
-            let count = $(page).find("p").length;
-            if(count > 20) {
-                $(page +" p:last").fadeOut(1000, function () {
-                    $(this).remove();
-                });
-            }
-        }, 4000);
-    }
-
 }
 
 String.prototype.strToUpperFirst = function () {

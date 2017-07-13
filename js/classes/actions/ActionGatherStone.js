@@ -15,7 +15,7 @@ class ActionGatherStone {
 
             let itemStoneClass = ResourceFactory.asNew('Stone');
 
-            let woodAmountGathered = Misc.randomIntFromInterval(itemStoneClass.getGatherMinAmount(), itemStoneClass.getGatherMaxAmount());
+            let stoneAmountGathered = Misc.randomIntFromInterval(itemStoneClass.getGatherMinAmount(), itemStoneClass.getGatherMaxAmount());
 
             $(classScope.eventProgressBarId).animate({
                 width: "100%"
@@ -27,7 +27,9 @@ class ActionGatherStone {
                     $(classScope.eventProgressBarDivId).hide();
 
                     // TODO Setup logic for axes and such
-                    itemStoneClass.setQuantity(itemStoneClass.getQuantity() + woodAmountGathered).setDisplayAmount(itemStoneClass.getQuantity());
+                    itemStoneClass.setQuantity(itemStoneClass.getQuantity() + stoneAmountGathered).setDisplayAmount(itemStoneClass.getQuantity());
+
+                    Page.paragraphWrite('Gathered ' + stoneAmountGathered + ' stone.');
                 }
             });
         });

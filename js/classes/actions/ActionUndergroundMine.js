@@ -11,7 +11,7 @@ class ActionUndergroundMine {
         $(classScope.eventButtonId).click(function () {
             let undergroundMineClass = BuildingFactory.asNew('UndergroundMine');
 
-            if(!undergroundMineClass.canBuild()) {
+            if (!undergroundMineClass.canBuild()) {
                 alert('You need more resources');
             } else {
                 $(classScope.buildingImageDiv).show();
@@ -19,29 +19,37 @@ class ActionUndergroundMine {
                 // Create one of each here and use them later on
                 let classNames = {};
                 $.each(im.resources, function (key, value) {
-                    classNames[key] = ResourceFactory.asNew(key.toUpperCase().strToUpperFirst());
+                    classNames[key] = ResourceFactory.asNew(key.toLowerCase().strToUpperFirst());
                 });
 
-
-                if(!undergroundMineClass.has()) {
+                if (!undergroundMineClass.has()) {
                     undergroundMineClass.build();
-                    undergroundMineClass.setQuantity(undergroundMineClass.getQuantity() + 1);
-                    undergroundMineClass.setDisplayAmount(undergroundMineClass.getQuantity());
+                    undergroundMineClass.setQuantity(undergroundMineClass.getQuantity() + 1).setDisplayAmount(undergroundMineClass.getQuantity());
 
-                    // It could be cleared at one point, who knows
-                    let ugMineTimer = setInterval(function(){
+                    setInterval(function () {
                         let products = undergroundMineClass.calculateMinedProduce();
+                        let html = 'Your ' + undergroundMineClass.getDisplayName() + ' produced: ';
+                        let write = false;
+
                         $.each(products, function (key, value) {
                             classNames[key].setQuantity(classNames[key].getQuantity() + value).setDisplayAmount(classNames[key].getQuantity());
+                            if (value > 0) {
+                                write = true;
+                                html += value + ' ' + key + ', ';
+                            }
                         });
-                        console.log(products);
-                    }, undergroundMineClass.getDelay());
-                }else{
-                    undergroundMineClass.build();
-                    undergroundMineClass.setQuantity(undergroundMineClass.getQuantity() + 1);
-                    undergroundMineClass.setDisplayAmount(undergroundMineClass.getQuantity());
-                }
 
+                        html = html.slice(0, -2) + '.';
+
+                        if (write) {
+                            Page.paragraphWrite(html);
+                        }
+
+                    }, undergroundMineClass.getDelay());
+                } else {
+                    undergroundMineClass.build();
+                    undergroundMineClass.setQuantity(undergroundMineClass.getQuantity() + 1).setDisplayAmount(undergroundMineClass.getQuantity());
+                }
             }
         });
     }
