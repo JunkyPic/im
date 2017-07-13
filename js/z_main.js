@@ -1,30 +1,30 @@
 $(document).ready(function () {
     $('#im_buildings').hide();
-    $('#im_generation').hide();
+    $('#im_generation_info').hide();
     $('#im_research').hide();
 
     $('#im_btn_resources').click(function () {
         $('#im_buildings').hide();
         $('#im_resources').show();
-        $('#im_generation').hide();
+        $('#im_generation_info').hide();
         $('#im_research').hide();
     });
     $('#im_btn_buildings').click(function () {
         $('#im_buildings').show();
         $('#im_resources').hide();
-        $('#im_generation').hide();
+        $('#im_generation_info').hide();
         $('#im_research').hide();
     });
     $('#im_btn_generation').click(function () {
         $('#im_buildings').hide();
         $('#im_resources').hide();
-        $('#im_generation').show();
+        $('#im_generation_info').show();
         $('#im_research').hide();
     });
     $('#im_btn_research').click(function () {
         $('#im_buildings').hide();
         $('#im_resources').hide();
-        $('#im_generation').hide();
+        $('#im_generation_info').hide();
         $('#im_research').show();
     });
 
@@ -71,15 +71,7 @@ function onClickCreate(itemName, itemClassName, e) {
         Page.paragraphWrite('You have created one ' + itemClass.getDisplayName() + '. And now have: ' + itemClass.getQuantity() + ' ' + itemClass.getDisplayName());
         // Place item in inventory if no other item is there
         let inventoryClass = InventoryFactory.asNew();
-
-        let itemInvHtmlClass = inventoryClass.put(itemClass.getMachineName());
-
-        $(itemInvHtmlClass).attr('title',  itemClass.getTooltipText());
-        $(itemInvHtmlClass).attr('data-toggle',  itemInvHtmlClass);
-        $(itemInvHtmlClass).attr('data-placement',  'right');
-        $(itemInvHtmlClass).attr('data-html',  'true');
-        $('[data-toggle="'+itemInvHtmlClass+'"]').tooltip();
-        return;
+        inventoryClass.put(itemClass.getMachineName());
     }
     Page.paragraphWrite('You cannot build that item yet.');
 }

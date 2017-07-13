@@ -7,18 +7,21 @@ im.buildings.undergroundMine = {
     tier: {
         tierOne: {
             machineName: 'tierOne',
+            displayName: 'I',
             exists: true,
             produceChanceMultiplier: 1,
             produce: ['stone', 'coal', 'gold', 'silver', 'copper', 'tin'],
         },
         tierTwo: {
             machineName: 'tierTwo',
+            displayName: 'II',
             exists: false,
             produceChanceMultiplier: 2.5,
             produce: ['stone', 'coal', 'gold', 'silver', 'copper', 'tin', 'ironOre', 'bauxite'],
         },
         tierThree: {
             machineName: 'tierThree',
+            displayName: 'III',
             exists: false,
             produceChanceMultiplier: 5,
             produce: ['stone', 'coal', 'gold', 'silver', 'copper', 'tin', 'ironOre', 'bauxite', 'nickle', 'magnesium', 'titaniumOre'],

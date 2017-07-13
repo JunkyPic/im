@@ -59,7 +59,7 @@ class Inventory {
                     this._setHasItem(this.slot_0);
                     this._setItemInSlot(this.slot_0, itemMachineName);
                     this._setDisplay(this.slot_0_html_id, itemMachineName);
-                return this.slot_0_html_id;
+                break;
             case itemMachineName.indexOf('Axe') !== -1:
                     this._setRemoveItem(this.slot_1);
                     this._setHasItem(this.slot_1);
@@ -71,44 +71,43 @@ class Inventory {
                     this._setHasItem(this.slot_2);
                     this._setItemInSlot(this.slot_2, itemMachineName);
                     this._setDisplay(this.slot_2_html_id, itemMachineName);
-                return this.slot_2_html_id;
-
+                break;
             case itemMachineName.indexOf('Hoe') !== -1:
                     this._setRemoveItem(this.slot_3);
                     this._setHasItem(this.slot_3);
                     this._setItemInSlot(this.slot_3, itemMachineName);
                     this._setDisplay(this.slot_3_html_id, itemMachineName);
-                return this.slot_3_html_id;
+                break;
             case itemMachineName.indexOf('Knife') !== -1:
                     this._setRemoveItem(this.slot_4);
                     this._setHasItem(this.slot_4);
                     this._setItemInSlot(this.slot_4, itemMachineName);
                     this._setDisplay(this.slot_4_html_id, itemMachineName);
-                return this.slot_4_html_id;
+                break;
             case itemMachineName.indexOf('Spear') !== -1:
                     this._setRemoveItem(this.slot_5);
                     this._setHasItem(this.slot_5);
                     this._setItemInSlot(this.slot_5, itemMachineName);
                     this._setDisplay(this.slot_5_html_id, itemMachineName);
-                return this.slot_5_html_id;
+                break;
             case itemMachineName.indexOf('Sword') !== -1:
                     this._setRemoveItem(this.slot_6);
                     this._setHasItem(this.slot_6);
                     this._setItemInSlot(this.slot_6, itemMachineName);
                     this._setDisplay(this.slot_6_html_id, itemMachineName);
-                return this.slot_6_html_id;
+                break;
             case itemMachineName.indexOf('Shield') !== -1:
                     this._setRemoveItem(this.slot_7);
                     this._setHasItem(this.slot_7);
                     this._setItemInSlot(this.slot_7, itemMachineName);
                     this._setDisplay(this.slot_7_html_id, itemMachineName);
-                return this.slot_7_html_id;
+                break;
             case itemMachineName.indexOf('Armor') !== -1:
                     this._setRemoveItem(this.slot_8);
                     this._setHasItem(this.slot_8);
                     this._setDisplay(this.slot_8_html_id, itemMachineName);
                     this._setItemInSlot(this.slot_8, itemMachineName);
-                return this.slot_8_html_id;
+                break;
         }
     }
 

@@ -38,7 +38,7 @@ $(document).ready(function () {
     $('[data-toggle="im_buildings_blast_furnace_tooltip"]').tooltip();
 
     // Forge
-    $('#im_buildings_uforge_build_button').attr('title', buildTooltipText(im.buildings.forge.tooltip));
+    $('#im_buildings_forge_build_button').attr('title', buildTooltipText(im.buildings.forge.tooltip));
     $('[data-toggle="im_buildings_forge_tooltip"]').tooltip();
 
     // Coke Oven
@@ -52,6 +52,18 @@ $(document).ready(function () {
     // Gold
     $('#im_resources_gold_tooltip').attr('title', (ResourceFactory.asNew('Gold').getTooltipText()));
     $('[data-toggle="im_resources_gold_tooltip"]').tooltip();
+
+    $.each(im.items, function (key, value) {
+        // build the ids of the item
+        // base id is im_builder_
+        // We just need to add the machine name
+        let id = 'im_builder_' + im.items[key].machineName;
+        $('#' + id).attr('title',  im.items[key].tooltip.tooltip_text);
+        $('#' + id).attr('data-toggle',  id);
+        $('#' + id).attr('data-placement',  'right');
+        $('#' + id).attr('data-html',  'true');
+        $('[data-toggle="' + id +'"]').tooltip();
+    })
 });
 
 function buildTooltipText(obj) {

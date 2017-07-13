@@ -12,7 +12,7 @@ class ActionUndergroundMine {
             let undergroundMineClass = BuildingFactory.asNew('UndergroundMine');
 
             if (!undergroundMineClass.canBuild()) {
-                alert('You need more resources');
+                Page.paragraphWrite('You require more resources.');
             } else {
                 $(classScope.buildingImageDiv).show();
                 // So we don't create a new resource class every time
@@ -21,6 +21,9 @@ class ActionUndergroundMine {
                 $.each(im.resources, function (key, value) {
                     classNames[key] = ResourceFactory.asNew(key.toLowerCase().strToUpperFirst());
                 });
+
+                // Create generation class to update info
+                let generationClass = new Generation();
 
                 if (!undergroundMineClass.has()) {
                     undergroundMineClass.build();
@@ -44,6 +47,14 @@ class ActionUndergroundMine {
                         if (write) {
                             Page.paragraphWrite(html);
                         }
+
+                        let mineTier = undergroundMineClass.getTier();
+
+
+                        html = 'Your ' + undergroundMineClass.getDisplayName() + ' is currently Tier ' + undergroundMineClass.getTierDisplayName();
+
+                        // Update information about mine on each pass
+                        generationClass.displayInformation(html, undergroundMineClass.getMachineName());
 
                     }, undergroundMineClass.getDelay());
                 } else {

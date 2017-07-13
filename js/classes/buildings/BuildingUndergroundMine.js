@@ -17,6 +17,20 @@ class BuildingUndergroundMine extends BuildingBase {
         return tierObject.tierThree.machineName;
     }
 
+    getTierDisplayName() {
+        let tierObject = im.buildings[this.item].tier;
+
+        let currentTier = '';
+
+        $.each(tierObject, function (key, value) {
+            if(value['exists']) {
+                currentTier = value['displayName'];
+                return false;
+            }
+        });
+        return currentTier;
+    };
+
     setTier(tierMachineName) {
         let tierObject = im.buildings[this.item].tier;
 

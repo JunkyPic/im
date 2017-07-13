@@ -5,7 +5,7 @@ class BuildingBase {
     }
 
     getMachineName() {
-        return im[this.item].machineName;
+        return im.buildings[this.item].machineName;
     }
 
     getQuantity () {
