@@ -50,3 +50,5 @@ $.each(im.resources, function (key, value) {
 ActionFactory.asNew('GatherWood').propagateAction();
 // Gather stone
 ActionFactory.asNew('GatherStone').propagateAction();
+//Build Buildings
+ActionFactory.asNew('UndergroundMine').propagateAction();
