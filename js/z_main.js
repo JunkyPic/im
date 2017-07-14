@@ -72,6 +72,7 @@ function onClickCreate(itemName, itemClassName, e) {
         // Place item in inventory if no other item is there
         let inventoryClass = InventoryFactory.asNew();
         inventoryClass.put(itemClass.getMachineName());
+    } else {
+        Page.paragraphWrite('You cannot build that item yet.');
     }
-    Page.paragraphWrite('You cannot build that item yet.');
 }

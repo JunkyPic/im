@@ -22,9 +22,6 @@ class ActionUndergroundMine {
                     classNames[key] = ResourceFactory.asNew(key.toLowerCase().strToUpperFirst());
                 });
 
-                // Create generation class to update info
-                let generationClass = new Generation();
-
                 if (!undergroundMineClass.has()) {
                     undergroundMineClass.build();
                     undergroundMineClass.setQuantity(undergroundMineClass.getQuantity() + 1).setDisplayAmount(undergroundMineClass.getQuantity());
@@ -48,13 +45,21 @@ class ActionUndergroundMine {
                             Page.paragraphWrite(html);
                         }
 
-                        let mineTier = undergroundMineClass.getTier();
+                        html = 'Your ' + undergroundMineClass.getDisplayName() + ' is currently Tier ' + undergroundMineClass.getTierDisplayName() + '<br>';
+                        html += 'It will mine resources every 5 seconds.<br>';
+                        html+= '<table><tr><th>Resource</th><th>Chance</th><th>Min amount</th><th>Max amount</th></tr>';
+                        $.each(undergroundMineClass.getProduceObj(), function (key, value) {
+                            html += '<tr><td>' + key.strToUpperFirst() + '<td>' + value['chance'] + '%</td><td>' + value['minAmount'] + '</td><td>' + value['maxAmount'] + '</td></tr>';
+                        });
 
+                        html += '</table>';
 
-                        html = 'Your ' + undergroundMineClass.getDisplayName() + ' is currently Tier ' + undergroundMineClass.getTierDisplayName();
-
-                        // Update information about mine on each pass
-                        generationClass.displayInformation(html, undergroundMineClass.getMachineName());
+                        let id = 'im_buildings_underground_min_display_info';
+                        $('#' + id).attr('title',  html);
+                        $('#' + id).attr('data-toggle',  id);
+                        $('#' + id).attr('data-placement',  'left');
+                        $('#' + id).attr('data-html',  'true');
+                        $('[data-toggle="' + id +'"]').tooltip();
 
                     }, undergroundMineClass.getDelay());
                 } else {
